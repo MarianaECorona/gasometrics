@@ -12,6 +12,10 @@ export const navlinks = [
         title:"Partners",
     },
     {
+        id:"subscribe",
+        title:"Subscribe",
+    },
+    {
         id:"login",
         title:"Login",
     },
