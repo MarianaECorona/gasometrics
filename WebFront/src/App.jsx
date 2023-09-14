@@ -8,13 +8,13 @@ const App = () => {
     
     <div className="bg-gradient-to-r from-secondary to-orange-400 w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-        <div className={`bg-gradient-to-r from-secondary to-orange-400 ${styles.boxWidth}`}>
+        <div className={` ${styles.boxWidth}`}>
           <Navbar />
         </div>   
       </div>
 
-      <div className={`bg-gradient-to-r from-secondary to-orange-400 ${styles.flexStart}`}>
-        <div className={`bg-gradient-to-r from-secondary to-orange-400 ${styles.boxWidth}`}>
+      <div className={`${styles.flexStart}`}>
+        <div className={` ${styles.boxWidth}`}>
           <Hero />
         </div>
       </div>
