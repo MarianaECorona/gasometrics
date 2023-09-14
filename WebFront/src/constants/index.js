@@ -1,23 +1,23 @@
 export const navlinks = [
     {
         id: "home",
-        title: "Home",
+        title: "Inicio",
     },
     {
         id: "services",
-        title: "Services",
+        title: "Servicios",
     },
     {
         id:"partners",
-        title:"Partners",
+        title:"Socios",
     },
     {
         id:"subscribe",
-        title:"Subscribe",
+        title:"Contratar",
     },
     {
         id:"login",
-        title:"Login",
+        title:"Iniciar Sesion",
     },
       
 ];
