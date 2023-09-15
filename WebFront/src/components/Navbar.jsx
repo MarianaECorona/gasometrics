@@ -13,7 +13,10 @@ const Navbar = () => {
 
   return (
     <nav className='w-full flex py-6 justify-between items-center navbar'>
-      <img src={logo} alt="logo"className="w-[170px] h-[25px]"/>
+      <a href="#">
+        <img src={logo} alt="logo"className="w-[170px] h-[25px]"/>
+      </a>
+      
 
       {/* Mostrar los enlaces */}
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
