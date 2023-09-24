@@ -6,7 +6,7 @@ const Services = () => {
   return (
     <section id="services" className={`${layout.section}`}>
       <div className={`${layout.sectionInfo}`}>
-        <h2 className={`${styles.heading2} text-secondary mt-3 ml-4`}>
+        <h2 className={`${styles.heading2} text-secondary mt-5 ml-4`}>
           Conoce el nivel restante <br className="sm:block hidden" />
           de gas en tu tanque
         </h2>
@@ -20,7 +20,7 @@ const Services = () => {
         <div className="absolute z-[0] w-[90%] h-[95%]">
           <img src={shape} alt="shape"/>
         </div>
-      </div>
+      </div>        
     </section>
   )
 }
