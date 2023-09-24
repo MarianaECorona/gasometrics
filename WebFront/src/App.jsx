@@ -5,6 +5,7 @@ import Services from './components/Services'
 import ExtraService from './components/ExtraService'
 import Partness from './components/Partness'
 import GetStarted from './components/GetStarted'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -26,7 +27,7 @@ const App = () => {
 
       <div className={`bg-white ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <h1 className={`justify-center ${styles.heading1} text-secondary flex mt-5`}>
+          <h1 className={`${styles.flexCenter} ${styles.heading1} ${styles.paddingY} text-secondary flex mt-5`}>
               Te Ofrecemos
           </h1>
           <Services/>
@@ -40,7 +41,8 @@ const App = () => {
 
       <div className={`bg-white ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <h1 className={`justify-center ${styles.heading1} text-secondary flex mt-10`}>
+          <h1 className={`${styles.flexCenter} ${styles.heading1} ${styles.paddingY}
+             text-secondary text-center flex mt-10`}>
             Nuestros Socios
           </h1>
           <Partness/>
@@ -49,7 +51,16 @@ const App = () => {
 
       <div className={`${styles.flexStart} bg-white`}>
         <div className={`${styles.boxWidth}`}>
+          <h1 className={`${styles.heading1} ${styles.flexCenter} ${styles.paddingY   } text-secondary`}>
+            Contratanos
+          </h1>
           <GetStarted/>
+        </div>
+      </div>
+
+      <div className={`${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Footer/>
         </div>
       </div>
     </div>
