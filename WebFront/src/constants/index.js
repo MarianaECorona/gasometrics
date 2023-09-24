@@ -12,7 +12,7 @@ export const navlinks = [
         title:"Socios",
     },
     {
-        id:"subscribe",
+        id:"get-started",
         title:"Contratar",
     },
     {
