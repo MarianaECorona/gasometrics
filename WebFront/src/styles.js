@@ -24,6 +24,9 @@ const styles = {
     sectionImg: `flex-1 flex ${styles.flexCenter} md:ml-10 ml-0 md:mt-0 mt-10 relative`,
   
     sectionInfo: `flex-1 ${styles.flexStart} flex-col`,
+
+    inputLog:`w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent`,
+
   };
   
   export default styles;
