@@ -25,7 +25,11 @@ const styles = {
   
     sectionInfo: `flex-1 ${styles.flexStart} flex-col`,
 
-    inputLog:`w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent`,
+    inputLog:`w-full border-2 border-gray-200 rounded-xl p-4 mt-1 bg-transparent`,
+    labelLog:`text-lg font-medium`,
+
+    logExtras:`mt-8 flex justify-between items-center`,
+    buttonLog:`active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 rounded-xl text-lg`,
 
   };
   
