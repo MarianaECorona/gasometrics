@@ -5,15 +5,14 @@ import Login from './views/Login'
 const App = () => {
   return (
     
-   
-      <BrowserRouter>
-        <Routes>
+    <BrowserRouter>
+      <Routes>
         <Route path="/" element={<Index/>}/>
         <Route path="/login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>
-    
-  )
+  
+  );
 }
 
 export default App
