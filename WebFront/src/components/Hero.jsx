@@ -1,4 +1,5 @@
-import styles from "../styles"
+import { Link } from 'react-router-dom';
+import styles, {layout} from "../styles"
 import img from "../assets/bannerC-hd.png"
 
 
@@ -15,6 +16,15 @@ const Hero = () =>{
                     Revisa desde cualquier dispositivo el nivel restante gas 
                     en tu tanque estacionario
                     </p>
+
+                    <div className={`${styles.flexCenter} ${styles.paddingY}`}>
+                        <Link to="/login">
+                            <button className={`${layout.buttonLog} font-bold px-8 py-4 text-2xl text-white bg-gradient-to-r from-orange-400 to-secondary`}>
+                                Comenzar
+                            </button>
+                        </Link>
+                    </div>
+                    
                 </h1>
             </div>
                 <img src={img} alt="banner" className="w-[100%] h-[100%] md:w-[50%] md:h-[50%] relative" />
