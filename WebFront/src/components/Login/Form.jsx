@@ -11,15 +11,15 @@ const Form = () => {
           Ingresa tus datos para acceder a tu cuenta
         </p>
         <form action="">
-        <div className={`${styles.paddingY}`}>
+          <div className={`${styles.paddingY}`}>
           <div className="flex flex-col">
-            <label className={`${layout.labelLog}`}>Correo</label>
+            <label htmlFor='email' className={`${layout.labelLog}`}>Correo</label>
             <input className={`${layout.inputLog}`} 
               type={"email"} />
           </div>
           
           <div className="flex flex-col mt-4">
-            <label className={`${layout.labelLog}`}>Contraseña</label>
+            <label htmlFor="password" className={`${layout.labelLog}`}>Contraseña</label>
             <input className={`${layout.inputLog}`} 
               type={"password"} />
           </div>
