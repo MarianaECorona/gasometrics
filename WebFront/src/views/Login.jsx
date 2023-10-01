@@ -4,7 +4,7 @@ import styles from "../styles"
 
 const Login = () => {
   return (
-   <div className="flex w-full h-screen bg-stone-100">
+   <div className="flex w-full h-screen bg-gradient-to-r from-secondary to-orange-400">
     <div className={`w-full ${styles.flexCenter}  lg:w-1/2`}>
       <Form/>
     </div>
