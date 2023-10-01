@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles,{layout} from "../../styles"
 
 const Form = () => {
@@ -26,9 +27,12 @@ const Form = () => {
             <div>
               <p className='font-medium text-base'>
                 No tengo una cuenta 
-                <button className='font-medium text-base text-orange-600 ml-2'>
-                Registrarme
-              </button>
+                <Link to="/register">
+                  <button className='font-medium text-base text-orange-600 ml-2'>
+                    Registrarme
+                  </button>
+                </Link>
+                
               </p>
             </div>
 
