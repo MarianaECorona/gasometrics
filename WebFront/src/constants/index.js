@@ -15,11 +15,7 @@ export const navlinks = [
         id:"get-started",
         title:"Contratar",
     },
-    {
-        id:"login",
-        title:"Iniciar Sesion",
-    },
-      
+         
 ];
 
 export const footerlinks = [
