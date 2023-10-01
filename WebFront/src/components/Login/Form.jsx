@@ -27,7 +27,7 @@ const Form = () => {
             <div>
               <p className='font-medium text-base'>
                 No tengo una cuenta 
-                <Link to="/register">
+                <Link to="/signup">
                   <button className='font-medium text-base text-orange-600 ml-2'>
                     Registrarme
                   </button>
