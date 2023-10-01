@@ -10,6 +10,7 @@ const Form = () => {
         <p className={`font-medium text-lg text-slate-700`} >
           Ingresa tus datos para acceder a tu cuenta
         </p>
+        <form action="">
         <div className={`${styles.paddingY}`}>
           <div className="flex flex-col">
             <label className={`${layout.labelLog}`}>Correo</label>
@@ -58,6 +59,8 @@ const Form = () => {
             </button>
           </div>
         </div>
+        </form>
+        
         
 
     </div>
