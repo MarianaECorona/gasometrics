@@ -1,8 +1,16 @@
+import { Link } from 'react-router-dom';
+import styles, {layout} from '../styles';
 
 const GetStarted = () => {
   return (
     <section id="get-started">
-      <div>GetStarted</div>
+      <div className={`${styles.flexCenter} ${styles.paddingY}`}>
+        <Link to="/login">
+          <button className={`${layout.buttonLog} px-20 py-4 font-bold text-2xl text-white bg-secondary`}>
+            Comenzar
+          </button>
+        </Link>
+      </div>
     </section>
     
   )

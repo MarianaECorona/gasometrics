@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
 import {useState} from 'react'
 import logo from '../assets/logo_fondont.svg'
 import close from '../assets/close.svg'
 import menu from '../assets/menu.svg'
 import { navlinks } from '../constants';
+import {layout} from '../styles'
 
 const Navbar = () => {
 
@@ -17,7 +19,6 @@ const Navbar = () => {
         <img src={logo} alt="logo"className="w-[170px] h-[25px]"/>
       </a>
       
-
       {/* Mostrar los enlaces */}
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navlinks.map((nav, index) => (
@@ -31,6 +32,11 @@ const Navbar = () => {
             <a href={`#${nav.id}`}>{nav.title}</a>
           </li>
         ))}
+        <Link to="/login">
+          <button className={`${layout.buttonLog} font-bold px-4 py-2 text-secondary bg-white ml-3`}>
+            Iniciar Sesión
+          </button>
+        </Link>
       </ul>
 
       {/* Menu de hamburgesa */}
@@ -57,6 +63,13 @@ const Navbar = () => {
                 <a href={`#${nav.id}`}>{nav.title}</a>
               </li>
             ))}
+            <div>
+        <Link to="/login">
+          <button className={`${layout.buttonLog} font-semibold text-white`}>
+            Iniciar Sesión
+          </button>
+        </Link>
+      </div>
           </ul>
         </div>
       </div>
