@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'homepage',
     'administrador',
     'proveedor',
     'cliente',
@@ -93,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
             'NAME': 'gasometrics',
             'USER': 'root',
-            'PASSWORD': '9876543210',
+            'PASSWORD': 'admin',
             'HOST': 'localhost',
             'PORT': '3306',
     }
@@ -142,7 +145,71 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+LOGIN_URL = '/signin/' 
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = { 
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Gasometrics",
+    "site_brand": "Gasometrics",
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Gasometrics",
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Gasometrics",
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    # "site_logo": "website/assets/img/logo.png",
+    # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
+    # "login_logo": "website/assets/img/logo_2.png",
+    # Welcome text on the login screen
+    "welcome_sign": "Bienvenido",
+     # List of model admins to search from the search bar, search bar omitted if excluded
+    # If you want to use a single search field you dont need to use a list, you can use a simple string 
+    "search_model": ["auth.User", "auth.Group"],
+    # Copyright on the footer
+    "copyright": "Gasometrics",
+    
+    #light theme
+    "show_ui_builder": True,
+    
+}
+
+JAZZMIN_UI_TWEAKS = { 
+     "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-danger",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "united",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success",
+    }
+}
