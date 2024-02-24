@@ -16,3 +16,7 @@ def index(request):
 class clienteView(generics.ListAPIView):
     serializer_class=ClienteSerializer
     queryset=Cliente.objects.all()
+
+
+def home(request):
+    return render(request,'home.html')
