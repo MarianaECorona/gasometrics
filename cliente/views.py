@@ -20,3 +20,6 @@ class clienteView(generics.ListAPIView):
 
 def home(request):
     return render(request,'home.html')
+
+def pedido(request):
+    return render(request, 'pedido_form.html')
