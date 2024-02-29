@@ -28,11 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+AUTH_USER_MODEL = 'cuenta.Cuenta'
 
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
+    'cuenta',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +44,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'homepage',
-    'administrador',
     'proveedor',
     'cliente',
     'fotos',
