@@ -23,7 +23,6 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('proveedor-home', proveedor_view, name='proveedor-home'),
     path('api-auth/', include('rest_framework.urls')),
-    path('adminstrador/', include('administrador.urls')),
     path('proveedor/', include('proveedor.urls')),
     path('cliente/', include('cliente.urls')),
     path('fotos/', include('fotos.urls')),
