@@ -53,7 +53,7 @@
           <li><a class="nav-link scrollto" href="/#service">Servicios</a></li>
           <li><a class="nav-link scrollto" href="/#partners">Socios</a></li>
           <li><a class="nav-link scrollto" href="/proveedor-home">Proveedores</a></li>
-          <li><a class="getstarted scrollto" href="/#hero">Iniciar Sesión</a></li>
+          <li><a class="getstarted scrollto" href="{%url 'signin'%}">Iniciar Sesión</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -71,7 +71,7 @@
           <h2 data-aos="fade-up" data-aos-delay="400">Consulta tu nivel de gas y conecta con diferentes proveedores desde donde estes.</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href=" {% static '#about' %} " class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="{% url "register" %}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Comenzar</span>
                 <i class="bi bi-arrow-right"></i>
               </a>

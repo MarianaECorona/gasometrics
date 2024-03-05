@@ -1,9 +1,22 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth import authenticate
 from .models import Cuenta
 
+class LoginForm(forms.ModelForm):
+    email = forms.EmailField(label='Correo', widget=forms.EmailInput)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    class Meta:
+        model = Cuenta
+        fields = ('email', 'password')
+
+    def clean(self):
+        if self.is_valid():
+            email = self.cleaned_data['email']
+            password = self.cleaned_data['password']
+            if not authenticate(email=email, password=password):
+                raise forms.ValidationError("Invalid login")
+
 class RegistrationForm(forms.ModelForm):
-      
     username = forms.CharField(
         label='Usuario', min_length=4, max_length=50, )
     email = forms.EmailField(label='Correo', max_length=100, error_messages={
