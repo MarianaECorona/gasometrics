@@ -223,6 +223,13 @@ section {
   position: relative;
 }
 
+.navbar .user img {
+  width: 30px; /* Ajusta el ancho según tus necesidades */
+  height: 30px; /* Ajusta la altura según tus necesidades */
+  border-radius: 50%; /* Hace que la imagen sea redonda, ajusta según tus necesidades */
+  margin-left: 10px; /* Espaciado entre el icono y el último elemento de la lista, ajusta según tus necesidades */
+}
+
 .navbar a,
 .navbar a:focus {
   display: flex;
@@ -1039,4 +1046,12 @@ section {
 .pricing .btn-buy:hover {
   background: #E95420;
   color: #fff;
+}
+
+
+/*--------------------------------------------------------------
+# Registro
+--------------------------------------------------------------*/
+.form{
+  margin-top: 100px;
 }

@@ -58,12 +58,30 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href=" /# ">Inicio</a></li>
-          <li><a class="nav-link scrollto" href=" /# ">Nav1</a></li>
-          <li><a class="nav-link scrollto" href=" /# ">Nav2</a></li>
-          <li><a class="nav-link scrollto" href=" /# ">Nav3</a></li>
-          <li><a class="getstarted scrollto" href=" /# ">boton</a></li>
-        </ul>
+          <li><a class="nav-link scrollto active" href="/#">Inicio</a></li>
+        <li><a class="nav-link scrollto" href="/#">Nav1</a></li>
+        <li><a class="nav-link scrollto" href="/#">Nav2</a></li>
+        <li><a class="getstarted scrollto" href="/#">boton</a></li>
+        <li class="dropdown">
+          <a href="#">
+            <img src="{% static 'website/assets/img/cuenta/user_prof.svg'%}"
+             alt="Perfil de usuario" width=30px height=30px  border-radius=50% margin-left=10px;>
+             <i class="bi bi-chevron-down"></i>
+          </a>
+            <ul>
+              <li><a href="#">Hola {{user.username}} </a></li>
+              <li><a href="#">Configuración
+                <img src="{% static 'website/assets/img/cuenta/settings.svg' %}"
+                 width=25px height=20px>
+              </a></li>
+              <li><a href="{% url 'signout' %}">Cerrar Sesión
+                <img src="{% static 'website/assets/img/cuenta/logout.svg' %}"
+                 width=25px height=20px>
+              </a></li>
+            </ul>
+          
+        </li>
+      </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
