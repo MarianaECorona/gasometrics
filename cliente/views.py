@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from .serializers import ClienteSerializer
 from rest_framework import status, generics
 from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
+
 
 @api_view(['GET'])
 def index(request):
@@ -17,9 +19,10 @@ class clienteView(generics.ListAPIView):
     serializer_class=ClienteSerializer
     queryset=Cliente.objects.all()
 
-
+@login_required 
 def home(request):
     return render(request,'home.html')
 
+@login_required
 def pedido(request):
     return render(request, 'pedido_form.html')

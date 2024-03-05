@@ -18,6 +18,10 @@ def register(request):
             user.set_password(registerForm.cleaned_data['password'])
             user.is_active = True
             user.save()
+
+            # Log the user in after registration
+            login(request, user)
+            
             return redirect('main')
         except Exception as e:
             return render(request, 'register.html', {
