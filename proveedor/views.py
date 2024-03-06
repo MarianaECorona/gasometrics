@@ -16,3 +16,6 @@ def index(request):
 class proveedorView(generics.ListAPIView):
     serializer_class=ProveedorSerializer
     queryset=Proveedor.objects.all()
+
+def view_dashboard(request):
+    return render(request, 'dash_base.html')

@@ -33,51 +33,20 @@
 
         <div class="row gy-4" data-aos="fade-left">
 
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="box">
-              
-              <h3 style="color: #FF2021;">Vela Gas</h3>
-              <img src=" {% static 'website/assets/img/clients/client-1.png' %} " class="img-fluid" alt="">    
-              <div class="price"><sup>$</sup>0<span> / Litro</span></div>
-              
-              <ul>
-                <li>Nos orientamos por la satisfacción de los mercados actuales 
-                  y potenciales para ser uno de los principales proveedores de gas I.p a nivel nacional.</li>
-               
-              </ul>
-              <a href="#" class="btn-buy">Solicitar</a>
+          {% for post in posts %}
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+              <div class="box">
+                <h3 style="color: #DD0917;"> {{post.proveedor_name}} </h3>
+                <img src=" {{post.logo.url}} " class="img-fluid" alt="">
+                <div class="price"><sup>$</sup>{{post.precio}}<span> / Litro</span></div>
+                
+                <ul>
+                  <li>{{post.descripcion}}.</li>
+                </ul>
+                <a href="#" class="btn-buy">Solicitar</a>
+              </div>
             </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="box">
-              <h3 style="color: #E81096;">Gas Rosa</h3>
-              <img src=" {% static 'website/assets/img/clients/client-2.png' %} " class="img-fluid" alt="">
-              <div class="price"><sup>$</sup>19<span> / Litro</span></div>
-              
-              <ul>
-                <li>Ofrecemos calidad total en el producto y dar el mejor trato
-                   a nuestros clientes, acompañado de kilos y litros exactos.</li>
-             
-              </ul>
-              <a href="#" class="btn-buy">Solicitar</a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="box">
-              <h3 style="color: #DD0917;">Gas San Juan</h3>
-              <img src=" {% static 'website/assets/img/clients/client-4.png' %} " class="img-fluid" alt="">
-              <div class="price"><sup>$</sup>29<span> / Litro</span></div>
-              
-              <ul>
-                <li>Nuestra misión es ser la empresa líder en la región occidente y centro del país en la venta y 
-                  distribución de gas L.P., a través de un servicio diferenciado e innovador,
-                  con el mejor precio y mayor rendimiento.</li>
-              </ul>
-              <a href="#" class="btn-buy">Solicitar</a>
-            </div>
-          </div>
+        {% endfor %}
 
           <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
             <div class="box">

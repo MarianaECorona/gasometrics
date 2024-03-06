@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Cliente
+from proveedor.models import Post
 from rest_framework.response import Response
 from .serializers import ClienteSerializer
 from rest_framework import status, generics
@@ -21,7 +22,8 @@ class clienteView(generics.ListAPIView):
 
 @login_required 
 def home(request):
-    return render(request,'home.html')
+    posts = Post.objects.all()
+    return render(request,'home.html', {'posts':posts})
 
 def medicion(request):
     progress_value = 50
