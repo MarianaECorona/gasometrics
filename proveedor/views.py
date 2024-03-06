@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Proveedor
+from .forms import PostForm
 from rest_framework.response import Response
 from .serializers import ProveedorSerializer
 from rest_framework import status, generics
 from rest_framework.decorators import api_view
+
 
 @api_view(['GET'])
 def index(request):
@@ -19,3 +21,17 @@ class proveedorView(generics.ListAPIView):
 
 def view_dashboard(request):
     return render(request, 'dash_base.html')
+
+def create_post(request):
+    context = {}
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        context['form'] =  form
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = PostForm()
+
+    return render(request, 'create_post.html', {'form': form, 'context':context})
+

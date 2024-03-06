@@ -4524,9 +4524,10 @@ input[type="button"].btn-block {
 
 .card-body {
   flex: 1 1 auto;
-  min-height: 1px;
+  height: auto;
   padding: 1.25rem;
 }
+
 
 .card-title {
   margin-bottom: 0.75rem;
@@ -9592,15 +9593,15 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #4e73df !important;
+  color: #E95420 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #224abe !important;
+  color: #EF7E58 !important;
 }
 
 .text-secondary {
-  color: #858796 !important;
+  color: #E95420 !important;
 }
 
 a.text-secondary:hover, a.text-secondary:focus {
