@@ -23,6 +23,18 @@ class clienteView(generics.ListAPIView):
 def home(request):
     return render(request,'home.html')
 
+def medicion(request):
+    progress_value = 75
+    porcentaje = progress_value * 0.01
+    capacidad = 250
+    total = capacidad * porcentaje
+    
+    return render(request, 'medicion.html',
+            {
+                'progress_value': progress_value,
+                'total': total,
+            })
+
 @login_required
-def pedido(request):
+def solicitud_pedido(request):
     return render(request, 'pedido_form.html')

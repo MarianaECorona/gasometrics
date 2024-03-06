@@ -31,10 +31,17 @@
   <!-- CSS para formulario Pedido -->
   <link rel="stylesheet" type="text/css" href=" {% static 'website/assets/form/css/opensans-font.css' %} ">
 	<link rel="stylesheet" type="text/css" href=" {% static 'website/assets/form/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %} ">
-	<!-- datepicker -->
+  <!-- datepicker -->
 	<link rel="stylesheet" type="text/css" href=" {% static 'website/assets/form/css/jquery-ui.min.css' %} ">
 	<!-- Main Style Css -->
   <link rel="stylesheet" href=" {% static 'website/assets/form/css/style.css' %} "/>
+
+  <style>
+    canvas {
+        display: block;
+        margin: auto;
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: FlexStart
@@ -51,17 +58,16 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="/#e_hero" class="logo d-flex align-items-center">
+      <a href="{% url "main" %}" class="logo d-flex align-items-center">
         <img src=" {% static 'website/assets/img/logo.png' %} " alt="">
         <span>Gasometrics</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="/#">Inicio</a></li>
-        <li><a class="nav-link scrollto" href="/#">Nav1</a></li>
-        <li><a class="nav-link scrollto" href="/#">Nav2</a></li>
-        <li><a class="getstarted scrollto" href="/#">boton</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'main' %}">Inicio</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'medicion'%}">Medicion</a></li>
+        <li><a class="nav-link scrollto" href="#">Mis Pedidos</a></li>
         <li class="dropdown">
           <a href="#">
             <img src="{% static 'website/assets/img/cuenta/user_prof.svg'%}"
@@ -127,6 +133,8 @@
 	<script src=" {% static 'website/assets/form/js/jquery.steps.js' %} "></script>
 	<script src=" {% static 'website/assets/form/js/jquery-ui.min.js' %} "></script>
 	<script src=" {% static 'website/assets/form/js/main.js' %} "></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </body>
 

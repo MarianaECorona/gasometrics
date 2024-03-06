@@ -1,0 +1,120 @@
+{% extends "base_cliente.html" %}
+{% load static %}
+
+{% block content %}
+    <section id="medicion" class="medicion">
+        <div class="container">
+            <header class="section-header p-3">
+                <p>Mediciones</p>      
+            </header>
+            <div class="row d-flex justify-content-center align-items-center h-auto p-3">
+                <div class="col-lg-7 col-md-8 col-sm-12" >
+                    <div class="box">
+                        <h3> Nivel restante en tu tanque</h3>
+
+                        <canvas id="progressChart" width="180" height="180"></canvas>
+
+                        {% block script %}
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var ctx = document.getElementById('progressChart').getContext('2d');
+                                var progressValue = {{ progress_value }};  // Fetch progress value from Django view
+
+                                var data = {
+                                    datasets: [{
+                                        data: [progressValue, 100 - progressValue],
+                                        backgroundColor: ['#E95420', '#ecf0f1'],  // Adjust colors as needed
+                                    }],
+                                };
+
+                                var options = {
+                                    cutout: 70,  // Adjust cutout to make it a complete circle
+                                    rotation: -0.5 * Math.PI,  // Start from the top
+                                    circumference: 114.5 * Math.PI,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    animation: {
+                                        onComplete: function(animation) {
+                                            // Agregar texto en el centro después de que la gráfica está renderizada
+                                            var centerX = ctx.canvas.width / 2;
+                                            var centerY = ctx.canvas.height / 1.8;
+                                            ctx.font = '40px Arial'; // Ajusta el tamaño y la fuente según tus preferencias
+                                            ctx.fillStyle = '#000'; // Ajusta el color del texto
+                                            ctx.textAlign = 'center';
+                                            ctx.textBaseline = 'middle';
+                                            ctx.fillText(progressValue + '%', centerX, centerY);
+                                        }
+                                    }
+                                };
+
+                                var myPieChart = new Chart(ctx, {
+                                    type: 'doughnut',
+                                    data: data,
+                                    options: options,
+                                });
+                            });
+                        </script>
+                        {% endblock script %}
+
+                        <div class="level p-5">Restan en tu tanque
+                            <span>{{total}} Litros</span>
+                        </div>
+                        
+                        <a href="#" class="btn-req">Consultar</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+
+            <header class="section-header d-flex justify-justify-content-around">
+                <p>Historial de Mediciones</p>
+            </header>
+
+            <div class="limiter">
+                <div class="container-table100">
+                    <div class="wrap-table100">
+                        <div class="table100">
+                            <table>
+                                <thead>
+                                    <tr class="table100-head">
+                                    <th class="column1">Fecha</th>
+                                    <th class="column2">ID</th>
+                                    <th class="column3">Nivel</th>
+                                    <th class="column4">Litros </th>
+                                    <th class="column5">Accion 1</th>
+                                    <th class="column6">Accion 2</th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="column1">2017-09-29 11:00</td>
+                                    <td class="column2">200398</td>
+                                    <td class="column3">85% </td>
+                                    <td class="column4">212.5 Litros</td>
+                                    <td class="column5">*</td>
+                                    <td class="column6">*</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">2017-10-05 11:00</td>
+                                    <td class="column2">200397</td>
+                                    <td class="column3">78% </td>
+                                    <td class="column4">195 Litros</td>
+                                    <td class="column5">*</td>
+                                    <td class="column6">*</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+    </section>
+
+{% endblock content %}
