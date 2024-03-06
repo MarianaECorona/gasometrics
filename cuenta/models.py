@@ -40,6 +40,7 @@ class Cuenta(AbstractBaseUser, PermissionsMixin):
     is_superuser        = models.BooleanField(default=False)
     is_active           = models.BooleanField(default=True)
     hide_email          = models.BooleanField(default=True)
+    last_login = models.DateTimeField(auto_now=True)  # Add this line
 
     objects = MyAccountManager()
 

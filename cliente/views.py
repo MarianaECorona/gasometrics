@@ -24,7 +24,7 @@ def home(request):
     return render(request,'home.html')
 
 def medicion(request):
-    progress_value = 75
+    progress_value = 50
     porcentaje = progress_value * 0.01
     capacidad = 250
     total = capacidad * porcentaje

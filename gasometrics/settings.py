@@ -153,6 +153,9 @@ STATICFILES_DIRS = [
     
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -167,14 +170,14 @@ JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Gasometrics",
     # Logo to use for your site, must be present in static files, used for brand on top left
-    # "site_logo": "website/assets/img/logo.png",
+    "site_logo": "website/assets/img/logo.png",
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    # "login_logo": "website/assets/img/logo_2.png",
+    "login_logo": "website/assets/img/log.svg",
     # Welcome text on the login screen
     "welcome_sign": "Bienvenido",
      # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string 
-    "search_model": ["auth.User", "auth.Group"],
+    # "search_model": ["auth.User", "auth.Group"],
     # Copyright on the footer
     "copyright": "Gasometrics",
     
