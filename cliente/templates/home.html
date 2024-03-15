@@ -43,7 +43,7 @@
                 <ul>
                   <li>{{post.descripcion}}.</li>
                 </ul>
-                <a href="#" class="btn-buy">Solicitar</a>
+                <a href="{% url 'pedido_form' %}" class="btn-buy">Solicitar</a>
               </div>
             </div>
           {% endfor %}
@@ -52,5 +52,7 @@
       </div>
 
     </section><!-- End Pricing Section -->
+
+
     
 {% endblock content %}

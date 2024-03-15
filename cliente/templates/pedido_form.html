@@ -8,7 +8,8 @@
 		<div class="wizard-heading">Solicita el Relleno a tu Tanque</div>
 		<div class="wizard-v6-content">
 			<div class="wizard-form">
-		        <form class="form-register" id="form-register" action="#" method="post">
+		        <form class="form-register" id="form-register" method="post">
+					{% csrf_token %}
 		        	<div id="form-total">
 		        		<!-- SECTION 1 -->
 			            <h2>
@@ -20,6 +21,7 @@
 			                	<div class="form-heading">
 			                		<h3>Datos Generales</h3>
 			                		<span>1/3</span>
+									{{post.precio}}
 			                	</div>
 								<div class="form-row">
 									<div class="form-holder">
