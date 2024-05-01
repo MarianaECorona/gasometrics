@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'proveedor',
     'cliente',
     'fotos',
+    'pedido',
 ]
 
 # REST_FRAMEWORK = {
