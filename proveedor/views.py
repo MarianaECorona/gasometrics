@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .serializers import ProveedorSerializer
 from rest_framework import status, generics
 from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
 
 
 @api_view(['GET'])
@@ -19,19 +20,32 @@ class proveedorView(generics.ListAPIView):
     serializer_class=ProveedorSerializer
     queryset=Proveedor.objects.all()
 
+@login_required
 def view_dashboard(request):
-    return render(request, 'dash_base.html')
-
-def create_post(request):
-    context = {}
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        context['form'] =  form
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard')
+    user = request.user
+    if user.is_provider:
+        return render(request, 'dash_base.html')
     else:
-        form = PostForm()
+        return Response({'mensaje':'bad request'}, status=status.HTTP_400_BAD_REQUEST)
 
-    return render(request, 'create_post.html', {'form': form, 'context':context})
+@login_required
+def create_post(request):
+    user =  request.user
+
+    if user.is_provider:
+        
+        context = {}
+        if request.method == 'POST':
+            form = PostForm(request.POST, request.FILES)
+            context['form'] =  form
+            if form.is_valid():
+                form.save()
+                return redirect('dashboard')
+            else:
+                form = PostForm()
+
+        return render(request, 'create_post.html', {'form': form, 'context':context})
+    
+    else:
+        return Response({'mensaje':'bad request'}, status=status.HTTP_400_BAD_REQUEST)
 

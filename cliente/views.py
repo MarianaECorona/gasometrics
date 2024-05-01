@@ -22,20 +22,30 @@ class clienteView(generics.ListAPIView):
 
 @login_required 
 def home(request):
-    posts = Post.objects.all()
-    return render(request,'home.html', {'posts':posts})
+    user = request.user
 
+    if user.is_client:
+        posts = Post.objects.all()
+        return render(request,'home.html', {'posts':posts})
+    else:
+        return Response({'mensaje':'bad request'}, status=status.HTTP_400_BAD_REQUEST)
+
+@login_required
 def medicion(request):
-    progress_value = 50
-    porcentaje = progress_value * 0.01
-    capacidad = 250
-    total = capacidad * porcentaje
+    user = request.user
+    if user.is_client:
+        progress_value = 50
+        porcentaje = progress_value * 0.01
+        capacidad = 250
+        total = capacidad * porcentaje
     
-    return render(request, 'medicion.html',
+        return render(request, 'medicion.html',
             {
                 'progress_value': progress_value,
                 'total': total,
             })
+    else:
+        return Response({'mensaje':'bad request'}, status=status.HTTP_400_BAD_REQUEST)
 
 @login_required
 def post_detail(request, id_post):

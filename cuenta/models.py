@@ -6,14 +6,16 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 class MyAccountManager (BaseUserManager):
 
-    def create_user (self, email, username, password=None):
+    def create_user (self, email, username, password=None, is_client = False, is_provider = False):
         if not email:
             raise ValueError("Users must have an email address.")
         if not username:
             raise ValueError("Users must have an username.")
         user = self.model(
             email=self.normalize_email(email),
-            username = username
+            username = username,
+            is_client = is_client,
+            is_provider = is_provider,
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -24,6 +26,8 @@ class MyAccountManager (BaseUserManager):
             email=self.normalize_email(email),
             username=username,
             password=password,
+            is_client= True,
+            is_provider= True
         )
         user.is_admin = True
         user.is_staff = True
@@ -40,6 +44,8 @@ class Cuenta(AbstractBaseUser, PermissionsMixin):
     is_superuser        = models.BooleanField(default=False)
     is_active           = models.BooleanField(default=True)
     hide_email          = models.BooleanField(default=True)
+    is_client = models.BooleanField(default=False)  
+    is_provider = models.BooleanField(default=False)
     last_login = models.DateTimeField(auto_now=True)  # Add this line
 
     objects = MyAccountManager()
