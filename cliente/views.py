@@ -34,8 +34,8 @@ def home(request):
 def medicion(request):
     user = request.user
     if user.is_client:
-        progress_value = 50
-        porcentaje = progress_value * 0.01
+        progress_value = 41
+        porcentaje = round(progress_value * 0.01, 2)
         capacidad = 250
         total = capacidad * porcentaje
     
