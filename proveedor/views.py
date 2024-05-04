@@ -41,8 +41,8 @@ def create_post(request):
             if form.is_valid():
                 form.save()
                 return redirect('dashboard')
-            else:
-                form = PostForm()
+        else:
+            form = PostForm()
 
         return render(request, 'create_post.html', {'form': form, 'context':context})
     
