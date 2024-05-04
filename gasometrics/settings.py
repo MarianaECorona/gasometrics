@@ -220,4 +220,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True  
 EMAIL_HOST_USER = 'mariana.corona9828@alumnos.udg.mx'
-EMAIL_HOST_PASSWORD = 'kkrsubgfskpfScahb'  
+EMAIL_HOST_PASSWORD = 'otvqpwvqzeezcolz'  
