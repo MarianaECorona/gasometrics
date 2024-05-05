@@ -24,7 +24,7 @@ class Proveedor(models.Model):
     def __str__(self):
         return self.domicilio()
 
-class  Post(models.Model):
+class Post(models.Model):
     class Meta:
         db_table = 'Post'
     

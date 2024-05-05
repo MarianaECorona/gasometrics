@@ -40,7 +40,7 @@ def register(request):
                     'token': token,
                 })
 
-                send_mail(subject, message, 'mariana.corona9828@alumnos.udg.mx', [user.email], fail_silently=False )
+                send_mail(subject, message, 'gasometricsmx@gmail.com', [user.email], fail_silently=False )
                 return render(request, 'account_success.html')
             else:
                return render(request, 'register.html', {'form': RegistrationForm(), 'error': str(e)})
@@ -77,7 +77,7 @@ def register_provider (request):
                     'token': token,
                 })
 
-                send_mail(subject, message, 'mariana.corona9828@alumnos.udg.mx', [user.email], fail_silently=False)
+                send_mail(subject, message, 'gasometricsmx@gmail.com', [user.email], fail_silently=False)
                 return render(request, 'account_success.html')
             else:
                 return render(request, 'register.html', {'form': registerForm, 'error': 'Invalid data entered.'})

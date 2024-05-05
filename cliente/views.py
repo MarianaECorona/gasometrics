@@ -52,3 +52,6 @@ def post_detail(request, id_post):
     if(request.method == 'GET'):
         post = get_object_or_404(Post, pk = id_post)
         return ()
+
+def test(request):
+    return render(request, 'payment_success.html')
