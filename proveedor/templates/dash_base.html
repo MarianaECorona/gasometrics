@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this template-->
     <link href=" {% static 'website/assets/dashboard/css/sb-admin-2.css' %} " rel="stylesheet">
+    <link href=" {% static 'website/assets/css/style.css' %} " rel="stylesheet">
 
 </head>
 
@@ -69,7 +70,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Manejo Posts:</h6>
-                        <a class="collapse-item" href=" # ">Ver Posts</a>
+                        <a class="collapse-item" href=" {% url 'view_post' %} ">Ver Posts</a>
                         <a class="collapse-item" href=" {% url "crear-post" %} ">Crear Posts</a>
                     </div>
                 </div>

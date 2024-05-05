@@ -1,0 +1,48 @@
+{% extends "dash_base.html" %}
+{% block title %}Mis Posts{% endblock title %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-10 col-lg-9">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Mis Post</h6>  
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <section id="pricing" class="pricing">
+                        <div class="row gy-4" data-aos="fade-left">
+                            {% for post in posts %}
+                              <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="box">
+                                  <h3 style="color: #DD0917;"> {{post.proveedor_name}} </h3>
+                                  <img src=" {{post.logo.url}} " class="img-fluid" alt="">
+                                  <div class="price"><sup>$</sup>{{post.precio}}<span> / Litro</span></div>
+                                  
+                                  <ul>
+                                    <li>{{post.descripcion}}.</li>
+                                  </ul>
+                                  <form method="post" action = "{% url 'delete' post.id_post %}"> 
+                                    {% csrf_token %}
+                                    <button class="btn btn-danger mt-3">
+                                        Eliminar 
+                                    </button>
+                                  </form>
+                                  
+                                  
+                                </div>
+                              </div>
+                            {% endfor %}
+                          </div>
+                    </section>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

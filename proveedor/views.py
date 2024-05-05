@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Proveedor
 from .forms import PostForm
 from rest_framework.response import Response
@@ -6,6 +6,7 @@ from .serializers import ProveedorSerializer
 from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
+from .models import Post
 
 
 @api_view(['GET'])
@@ -49,3 +50,13 @@ def create_post(request):
     else:
         return Response({'mensaje':'bad request'}, status=status.HTTP_400_BAD_REQUEST)
 
+def view_post(request):
+    posts = Post.objects.all()
+    return render(request, 'view_post.html', {'posts':posts})
+
+def delete_post(request, id):
+    post = get_object_or_404(Post, pk = id)
+    
+    if request.method == 'POST':
+        post.delete()
+        return redirect ('dashboard')
