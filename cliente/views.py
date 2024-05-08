@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cliente
 from proveedor.models import Post
+from pedido.models import Pedido
 from rest_framework.response import Response
 from .serializers import ClienteSerializer
 from rest_framework import status, generics
@@ -52,6 +53,10 @@ def post_detail(request, id_post):
     if(request.method == 'GET'):
         post = get_object_or_404(Post, pk = id_post)
         return render(request, 'post_detail.html', {'post': post})
+
+def user_pedidos(request):
+    pedidos = Pedido.objects.filter(user_id= request.user)
+    return render(request, 'pedidos.html', {'pedidos': pedidos})
     
 
 def test(request):
