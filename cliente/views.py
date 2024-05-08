@@ -7,7 +7,9 @@ from .serializers import ClienteSerializer
 from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
-
+import glob
+import random
+import os
 
 @api_view(['GET'])
 def index(request):
@@ -33,9 +35,23 @@ def home(request):
 
 @login_required
 def medicion(request):
+
+    directorio = "./static/website/assets/img/medidores"
+    patron = "medidor_*"
+    archivos = glob.glob(os.path.join(directorio, patron))
+
+    if archivos:
+        cadena = ''
+        archivo_aleatorio = random.choice(archivos)
+        for i in range(len(archivo_aleatorio)):
+            if archivo_aleatorio[i] == '_':
+                cadena = archivo_aleatorio[i+1]+archivo_aleatorio[i+2]
+                medicion = int(cadena)
+
     user = request.user
     if user.is_client:
-        progress_value = 41
+        progress_value = medicion
+
         porcentaje = round(progress_value * 0.01, 2)
         capacidad = 250
         total = capacidad * porcentaje
@@ -61,4 +77,3 @@ def user_pedidos(request):
 
 def test(request):
     return render(request, 'post_detail.html')
-
