@@ -8,7 +8,7 @@ from rest_framework import status
 import stripe
 
 
-stripe.api.key = settings.SETTINGS_STRIPE_SECRET
+stripe.api_key = settings.SETTINGS_STRIPE_SECRET
 
 def sumary(request, id_post):
     user = request.user
@@ -60,7 +60,7 @@ def payment_process(request, pedido_id):
         except Exception as e:
             # Manejar otros errores
             return HttpResponseServerError(str(e))
-    return render(request, 'payment.html', {'pedido': pedido, 'client_secret': intento_pago.client_secret})
+    return render(request, 'payment.html', {'pedido': pedido, 'client_secret': intento_pago.client_secret, 'STRIPE_PUBLIC_KEY': settings.SETTINGS_STRIPE_PUBLIC})
 
 def pago_exitoso(request):
     return render(request, 'pago_exitoso.html')
