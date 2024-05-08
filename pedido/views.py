@@ -1,13 +1,14 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from gasometrics import settings
 from proveedor.models import Post
 from .models import Pedido
 from .forms import PedidoForm
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseServerError, JsonResponse
 from rest_framework import status
-#import stripe
+import stripe
 
 
-#stripe.api.key = settings.STRIPE_SECRET_KEY
+stripe.api.key = settings.SETTINGS_STRIPE_SECRET
 
 def sumary(request, id_post):
     user = request.user
@@ -35,10 +36,31 @@ def sumary(request, id_post):
         
 def payment_process(request, pedido_id):
     pedido = get_object_or_404(Pedido, pk = pedido_id)
+    total_centavos = int(pedido.total * 100)  # Convertir el total a centavos
+    intento_pago = stripe.PaymentIntent.create(
+        amount=total_centavos,
+        currency='mxn',
+        payment_method_types=['card']
+    )
+    if request.method == 'POST':
+        try:
+            intento_pago = stripe.PaymentIntent.confirm(
+                request.POST.get('payment_intent')
+            )
+            if intento_pago.status == 'succeeded':
+                # Actualizar el estado del pedido a "pagado"
+                pedido.status = 'pagado'
+                pedido.save()
+                return redirect('pago_exitoso')
+            else:
+                return HttpResponseServerError('El pago no se pudo procesar.')
+        except stripe.error.CardError as e:
+            # Manejar errores de tarjeta
+            return HttpResponseServerError(e.error.message)
+        except Exception as e:
+            # Manejar otros errores
+            return HttpResponseServerError(str(e))
+    return render(request, 'payment.html', {'pedido': pedido, 'client_secret': intento_pago.client_secret})
 
-    if request.method == 'GET':
-        return render(request, 'payment.html', {'pedido':pedido})
-
-
-        
-    
+def pago_exitoso(request):
+    return render(request, 'pago_exitoso.html')

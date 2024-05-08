@@ -2,7 +2,46 @@
 {% block title %}Proceso de Pago{% endblock title %}
 
 {% block content %}
-    pago
-    {{pedido.id_pedido}}
+<form id="payment-form">
+    <div id="card-element"><!-- Stripe.js injects the Card Element --></div>
+    <button id="submit">
+      <div class="spinner hidden" id="spinner"></div>
+      <span id="button-text">Pay now</span>
+    </button>
+    <p id="card-error" role="alert"></p>
+    <p class="result-message hidden">
+      Payment succeeded, see the result in your
+      <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+    </p>
+  </form>
+  
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+  
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+  
+    var form = document.getElementById('payment-form');
+    var resultContainer = document.getElementById('card-error');
+  
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      stripe.confirmCardPayment("{{ client_secret }}", {
+        payment_method: {
+          card: cardElement,
+        }
+      }).then(function(result) {
+        if (result.error) {
+          // Mostrar errores al usuario
+          resultContainer.textContent = result.error.message;
+        } else {
+          // Pago exitoso, redirigir a la página de confirmación
+          window.location.href = "{% url 'pago_exitoso' %}";
+        }
+      });
+    });
+  </script>
 
 {% endblock content %}
