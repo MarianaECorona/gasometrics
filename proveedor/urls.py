@@ -1,10 +1,12 @@
 from django.urls import path, re_path
-from .views import index, view_dashboard, create_post, view_post, delete_post
+from . import views
+from .views import index
 
 urlpatterns = [
     path('', index),
-    path('dashboard', view_dashboard, name= 'dashboard'),
-    path('crear-post', create_post, name='crear-post'),
-    path('view_post', view_post, name='view_post'),
-    path("<int:id>/delete", delete_post, name='delete'),
+    path('dashboard', views.view_dashboard, name= 'dashboard'),
+    path('crear-post', views.create_post, name='crear-post'),
+    path('view_post', views.view_post, name='view_post'),
+    path("<int:id>/delete", views.delete_post, name='delete'),
+    path('', views.detail_post, name='post_detail'),
 ]

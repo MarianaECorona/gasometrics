@@ -1,5 +1,5 @@
 from django.db import models
-from cuenta.models import Cuenta
+from django.conf import settings
 
 class Proveedor(models.Model):
     class Meta:
@@ -35,7 +35,7 @@ class Post(models.Model):
     descripcion = models.TextField( )
     creado = models.DateTimeField(auto_now_add = True)
     actualizado = models.DateTimeField(auto_now = True)
-    id_proveedor = models.ForeignKey(Cuenta, on_delete=models.CASCADE, default=None)
+    id_proveedor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='post_user')
 
     def __str__(self):
         return self.proveedor_name
