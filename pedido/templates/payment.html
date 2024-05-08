@@ -4,18 +4,39 @@
 {% block content %}
 <div class="container pt-5">
     <div class= "row pt-5"> 
-        <form id="payment-form">
-            <div id="card-element"><!-- Stripe.js injects the Card Element --></div>
-            <button id="submit">
-              <div class="spinner hidden" id="spinner"></div>
-              <span id="button-text">Pay now</span>
-            </button>
-            <p id="card-error" role="alert"></p>
-            <p class="result-message hidden">
-              Payment succeeded, see the result in your
-              <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-            </p>
-          </form>
+      <div class="col-md-8 mb-4 pt-5">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="card-header py-3 d-flex flex-row">
+              <h3 class="m-0 font-weight-bold" style="color:#E93C12; font-weight: bold;">
+                Pago del Pedido 
+              </h3>
+            </div>
+
+            <div class="border p-3"> 
+              <form id="payment-form">
+                <div class="row mb-4"  >
+                  <div class="col">
+                    <h6 class="m-0 font-weight-bold" style="color:#343434; font-weight: bold;">
+                      Datos de la tarjeta
+                    </h6><br><br>
+                    <div data-mdb-input-init class="form-outline" id="card-element"><!-- Stripe.js injects the Card Element --></div><br>
+                  </div>
+                </div>  
+                <button id="submit" class="btn btn-success">
+                 <div class="spinner hidden" id="spinner"></div>
+                <span id="button-text">Pagar</span>
+                </button>
+                <p id="card-error" role="alert"></p>
+                <p class="result-message hidden">
+                  Proceso de Pago exitoso, para verificar el pago revisa el 
+                <a href="" target="_blank">Stripe dashboard.</a> Recarga para volver a pagar.
+                </p>
+              </form>
+            <div>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
   
@@ -42,7 +63,7 @@
           resultContainer.textContent = result.error.message;
         } else {
           // Pago exitoso, redirigir a la página de confirmación
-          window.location.href = "{% url 'pago_exitoso' %}";
+          window.location.href = "{% url 'pago_exitoso' pedido.id_pedido %}";
         }
       });
     });
