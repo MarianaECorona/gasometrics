@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Proveedor
 from .forms import PostForm
@@ -31,27 +32,30 @@ def view_dashboard(request):
 
 @login_required
 def create_post(request):
-    user =  request.user
+    user = request.user
 
     if user.is_provider:
-        
-        context = {}
-        if request.method == 'POST':
+        if request.method == 'GET':
+            return render(request, 'create_post.html', {
+                'form': PostForm(),
+            })
+        elif request.method == 'POST':
             form = PostForm(request.POST, request.FILES)
-            context['form'] =  form
-            if form.is_valid():
-                form.save()
-                return redirect('dashboard')
-        else:
-            form = PostForm()
-
-        return render(request, 'create_post.html', {'form': form, 'context':context})
-    
-    else:
-        return Response({'mensaje':'bad request'}, status=status.HTTP_400_BAD_REQUEST)
+            try: 
+                if form.is_valid():
+                    new_post = form.save(commit=False)
+                    new_post.id_proveedor = user
+                    new_post.save()
+                    return redirect('view_post')
+                else:
+                    return render(request, 'create_post.html', {
+                        'form': form,
+                    })
+            except Exception as e:
+                return HttpResponse("Error: {}".format(str(e)), status=status.HTTP_400_BAD_REQUEST)
 
 def view_post(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(id_proveedor = request.user)
     return render(request, 'view_post.html', {'posts':posts})
 
 def delete_post(request, id):
@@ -60,3 +64,10 @@ def delete_post(request, id):
     if request.method == 'POST':
         post.delete()
         return redirect ('dashboard')
+
+def detail_post(request, id):
+    if request.method == 'GET':
+        pass
+    else:
+        pass
+    

@@ -40,10 +40,10 @@
                 <img src=" {{post.logo.url}} " class="img-fluid" alt="">
                 <div class="price"><sup>$</sup>{{post.precio}}<span> / Litro</span></div>
                 
-                <ul>
+                {% comment %} <ul>
                   <li>{{post.descripcion}}.</li>
-                </ul>
-                <a href="#" class="btn-buy">Solicitar</a>
+                </ul> {% endcomment %}
+                <a href="{% url 'post_detail' post.id_post %}" class="btn-buy">Solicitar</a>
               </div>
             </div>
           {% endfor %}
@@ -52,7 +52,5 @@
       </div>
 
     </section><!-- End Pricing Section -->
-
-
-    
+  </main>    
 {% endblock content %}

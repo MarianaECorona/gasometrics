@@ -51,7 +51,9 @@ def medicion(request):
 def post_detail(request, id_post):
     if(request.method == 'GET'):
         post = get_object_or_404(Post, pk = id_post)
-        return ()
+        return render(request, 'post_detail.html', {'post': post})
+    
 
 def test(request):
-    return render(request, 'payment_success.html')
+    return render(request, 'post_detail.html')
+

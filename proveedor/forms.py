@@ -17,7 +17,7 @@ class PostForm(forms.ModelForm):
     
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['proveedor_name', 'logo', 'precio', 'descripcion']
 
 
     
