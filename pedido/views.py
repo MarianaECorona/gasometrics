@@ -62,5 +62,8 @@ def payment_process(request, pedido_id):
             return HttpResponseServerError(str(e))
     return render(request, 'payment.html', {'pedido': pedido, 'client_secret': intento_pago.client_secret, 'STRIPE_PUBLIC_KEY': settings.SETTINGS_STRIPE_PUBLIC})
 
-def pago_exitoso(request):
+def pago_exitoso(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk = pedido_id)
+    pedido.status = 'Pagado'
+    pedido.save()
     return render(request, 'pago_exitoso.html')
